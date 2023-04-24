@@ -3,8 +3,8 @@
   "short_name": "EXQRESS",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F8F7DA",
-  "theme_color": "#8C383A",
+  "background_color": "#ffffff",
+  "theme_color": "#485EEE",
   "icons": [
     {
       "src": "icons/icon-48x48.png",
