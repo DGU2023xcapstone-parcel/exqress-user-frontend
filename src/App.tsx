@@ -1,9 +1,17 @@
+import AppRouter from "./routes/AppRouter";
+import GlobalStyle from "./style/globalStyle";
+import { ThemeProvider } from "@emotion/react";
+import { theme } from "./style/theme";
+
 function App() {
   return (
     <>
-      {/* <Titles>dsffsd</Titles> */}
-      <div>adsfads</div>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <AppRouter />
+      </ThemeProvider>
     </>
   );
 }
+
 export default App;
