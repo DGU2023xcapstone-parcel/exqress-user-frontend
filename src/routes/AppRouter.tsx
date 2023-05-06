@@ -6,6 +6,7 @@ import SignIn from "@/pages/SignIn";
 import SignUp from "@/pages/SignUp";
 import Info from "@/pages/Info";
 import InfoDetail from "@/pages/InfoDetail";
+import Kakao from "@/pages/KaKao";
 
 const AppRouter = () => {
   return (
@@ -13,7 +14,10 @@ const AppRouter = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="signin" element={<SignIn />} />
+            <Route path="signin">
+              <Route path="" element={<SignIn />} />
+              <Route path="kakao" element={<Kakao />} />
+            </Route>
             <Route path="signup" element={<SignUp />} />
             <Route path="scan">
               <Route path="" element={<Scan />} />
