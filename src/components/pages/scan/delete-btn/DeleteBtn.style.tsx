@@ -5,7 +5,7 @@ export const Wrapper = styled.button`
   ${({ theme }) => {
     const { colors, fonts } = theme;
     return css`
-      width: 90%;
+      width: 100%;
       height: 34px;
 
       display: flex;

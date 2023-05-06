@@ -2,15 +2,9 @@ import { InfoType } from "@/pages/Info";
 import InfoContent from "@/components/pages/info/info-content";
 import * as style from "./InfoTemplate.style";
 
-const RADIO_LIST = [
-  { text: "전체", inputValue: "all" },
-  { text: "배송완료", inputValue: "finish" },
-  { text: "배송시작", inputValue: "start" },
-];
-
 export interface InfoTemplateProps {
   infoList: InfoType[];
-  onClick: () => void;
+  onClick: (invoiceNo: string) => void;
 }
 const InfoTemplate = ({ infoList, onClick }: InfoTemplateProps) => {
   return (
@@ -28,6 +22,7 @@ const InfoTemplate = ({ infoList, onClick }: InfoTemplateProps) => {
             name={info.name}
             company={info.company}
             onClick={onClick}
+            key={info.invoiceNo}
           />
         ))}
       </style.InfoBox>

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   ${({ theme }) => {
     const { colors, fonts } = theme;
     return css`
-      width: 100%;
+      width: 115%;
       height: 190px;
       margin-top: 50px;
 
@@ -22,31 +22,22 @@ export const Wrapper = styled.div`
 `;
 
 export const Box = styled.div`
-  ${({ theme }) => {
-    return css`
-      width: 70px;
-      height: 80px;
+  width: 70px;
+  height: 80px;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-    `;
-  }}
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 `;
 
 export const State = styled.div`
-  ${({ theme }) => {
-    const { colors } = theme;
-    return css`
-      width: 60px;
-      height: 60px;
+  width: 60px;
+  height: 60px;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    `;
-  }}
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Icon = styled.img`

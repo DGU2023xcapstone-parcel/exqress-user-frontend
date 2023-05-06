@@ -4,17 +4,15 @@ const style = css`
   html,
   body {
     max-width: 420px;
+    height: 100vh;
     padding: 0;
     margin: 0px auto;
 
     -webkit-text-size-adjust: none;
   }
-  select,
-  input,
-  button,
-  textarea {
-    border: 0;
-    outline: 0 !important;
+  .root {
+    position: fixed;
+    overflow: hidden;
   }
 `;
 

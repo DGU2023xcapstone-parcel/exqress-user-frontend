@@ -6,7 +6,7 @@ interface InfoContentProps {
   invoiceNo: string;
   name: string;
   company: string;
-  onClick: () => void;
+  onClick: (invoiceNo: string) => void;
 }
 
 const InfoContent = ({
@@ -33,7 +33,7 @@ const InfoContent = ({
           {company}
         </style.Text>
       </div>
-      <style.Button onClick={onClick}>상세 정보</style.Button>
+      <style.Button onClick={() => onClick(invoiceNo)}>상세 정보</style.Button>
     </style.Wrapper>
   );
 };

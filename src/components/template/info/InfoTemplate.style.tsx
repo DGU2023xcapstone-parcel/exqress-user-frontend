@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   height: 100%;
-  width: 90%;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -11,23 +11,15 @@ export const Wrapper = styled.div`
 `;
 
 export const TitleBox = styled.div`
-  height: 30%;
+  height: 150px;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 `;
 
-export const RadioBox = styled.div`
-  width: 100%;
-  height: 50px;
-
-  display: flex;
-  justify-content: space-around;
-`;
-
 export const InfoBox = styled.div`
-  height: 70%;
+  height: 500px;
   width: 100%;
 
   overflow: auto;
