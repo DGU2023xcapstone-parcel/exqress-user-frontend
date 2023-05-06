@@ -1,6 +1,5 @@
-import { ChangeEvent, useState } from "react";
-import InfoTemplate from "@/components/template/info";
 import { useNavigate } from "react-router-dom";
+import InfoTemplate from "@/components/template/info";
 
 const INFO_LIST: InfoType[] = [
   {

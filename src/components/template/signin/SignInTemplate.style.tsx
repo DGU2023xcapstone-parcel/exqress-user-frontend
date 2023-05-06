@@ -28,3 +28,16 @@ export const Inner = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+
+export const BtnBox = styled.div`
+  height: 200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`;
+
+export const Img = styled.img`
+  cursor: pointer;
+`;

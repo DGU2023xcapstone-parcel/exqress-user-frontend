@@ -1,7 +1,7 @@
-import ResultList from "@/components/pages/scan/result-list";
 import { resultType } from "@/types/types";
+import ResultList from "@/components/pages/scan/result-list";
+import InfoDetailHead from "@/components/pages/info/info-detail-head";
 import * as style from "./InfoDetailTemplate.style";
-import InfoDetailHead from "../../pages/info/info-detail-head";
 
 export interface ScanResultTemplateProps {
   resultList: resultType;
