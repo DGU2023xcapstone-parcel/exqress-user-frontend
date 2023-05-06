@@ -39,5 +39,7 @@ export const BtnBox = styled.div`
 `;
 
 export const Img = styled.img`
+  width: 300px;
+
   cursor: pointer;
 `;

@@ -5,8 +5,8 @@ import SubmitBtn from "@/components/pages/sign/submit-btn";
 import SignupBtn from "@/components/pages/sign/signup-btn";
 import Kakao from "@/assets/kakao.svg";
 import Naver from "@/assets/naver.svg";
-import Google from "@/assets/google.svg";
 import * as style from "./SignInTemplate.style";
+import GoogleBtn from "@/components/pages/sign/google-btn";
 
 export interface SignInTemplateProps {
   id: string;
@@ -46,8 +46,8 @@ const SignInTemplate = ({
     <style.BtnBox>
       <SignupBtn />
       <style.Img src={Kakao} onClick={onKakaoLogin} />
-      <style.Img src={Naver} onClick={onKakaoLogin} />
-      <style.Img src={Google} onClick={onKakaoLogin} />
+      <style.Img src={Naver} onClick={() => {}} />
+      <GoogleBtn />
     </style.BtnBox>
   </style.Wrapper>
 );
