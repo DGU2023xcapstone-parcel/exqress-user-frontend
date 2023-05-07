@@ -1,39 +1,28 @@
+import { InfoType } from "@/types/info";
 import * as style from "./InfoContent.style";
 
 interface InfoContentProps {
-  date: string;
-  productName: string;
-  invoiceNo: string;
-  name: string;
-  company: string;
-  onClick: (invoiceNo: string) => void;
+  info: InfoType;
+  onClick: (info: InfoType) => void;
 }
-
-const InfoContent = ({
-  date,
-  productName,
-  invoiceNo,
-  name,
-  company,
-  onClick,
-}: InfoContentProps) => {
+const InfoContent = ({ info, onClick }: InfoContentProps) => {
   return (
     <style.Wrapper>
       <div>
         <style.Text isBig={false} isDark>
-          {date}
+          {info.date}
         </style.Text>
         <style.Text isBig isDark>
-          {productName}
+          {info.productName}
         </style.Text>
         <style.Text isBig={false} isDark={false}>
-          {invoiceNo} {name}
+          {info.invoiceNo} {info.sender}
         </style.Text>
         <style.Text isBig={false} isDark>
-          {company}
+          {info.company}
         </style.Text>
       </div>
-      <style.Button onClick={() => onClick(invoiceNo)}>상세 정보</style.Button>
+      <style.Button onClick={() => onClick(info)}>상세 정보</style.Button>
     </style.Wrapper>
   );
 };

@@ -1,10 +1,10 @@
-import { InfoType } from "@/pages/Info";
+import { InfoType } from "@/types/info";
 import InfoContent from "@/components/pages/info/info-content";
 import * as style from "./InfoTemplate.style";
 
 export interface InfoTemplateProps {
   infoList: InfoType[];
-  onClick: (invoiceNo: string) => void;
+  onClick: (info: InfoType) => void;
 }
 const InfoTemplate = ({ infoList, onClick }: InfoTemplateProps) => {
   return (
@@ -15,15 +15,7 @@ const InfoTemplate = ({ infoList, onClick }: InfoTemplateProps) => {
       </style.TitleBox>
       <style.InfoBox>
         {infoList.map((info) => (
-          <InfoContent
-            date={info.date}
-            productName={info.productName}
-            invoiceNo={info.invoiceNo}
-            name={info.name}
-            company={info.company}
-            onClick={onClick}
-            key={info.invoiceNo}
-          />
+          <InfoContent info={info} onClick={onClick} key={info.invoiceNo} />
         ))}
       </style.InfoBox>
     </style.Wrapper>

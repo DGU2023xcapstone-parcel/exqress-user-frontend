@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ScanTemplate from "@/components/template/scan";
+import { useSetNavVisible } from "@/hooks/useSetNavState";
+import { useGetScanResult } from "@/hooks/useGetScanResult";
 
 const Scan = () => {
-  const [result, setResult] = useState("no result");
+  const navigate = useNavigate();
+  const [result, setResult] = useState("");
   const [error, setError] = useState(null);
-
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
+  const { data, isSuccess, refetch, isLoading } = useGetScanResult(result);
 
   const handleError = (error: any) => {
     setError(error.message);
@@ -15,8 +16,21 @@ const Scan = () => {
   const handleScan = (data: string | null) => {
     if (data) {
       setResult(data);
+      refetch();
     }
   };
+
+  useSetNavVisible();
+  useEffect(() => {
+    // todo isSuccess로 바꿔야함
+    if (result !== "") {
+      navigate("/scan/result", {
+        state: {
+          infoData: data,
+        },
+      });
+    }
+  }, [result, isLoading]);
 
   return (
     <ScanTemplate onError={handleError} onScan={handleScan} result={result} />

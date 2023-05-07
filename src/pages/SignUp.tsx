@@ -1,16 +1,13 @@
-import { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useSignUp } from "@/hooks/useSignUp";
+import { SignUpInputType } from "@/types/sign";
 import SignUpTemplate from "@/components/template/signup";
+import { useSetNavInvisible } from "@/hooks/useSetNavState";
 
-export interface SignUpStateType {
-  id: string;
-  password: string;
-  name: string;
-  company: string;
-  phone: string;
-  email: string;
-}
 const SignUp = () => {
-  const [signupState, setSignupState] = useState<SignUpStateType>({
+  const navigate = useNavigate();
+  const [signupValue, setSignupValue] = useState<SignUpInputType>({
     id: "",
     password: "",
     name: "",
@@ -18,21 +15,29 @@ const SignUp = () => {
     phone: "",
     email: "",
   });
+  const { handleSignUp, data, isSuccess } = useSignUp(signupValue);
 
   const handleSignupState = (e: ChangeEvent<HTMLInputElement>) => {
-    setSignupState({
-      ...signupState,
+    setSignupValue({
+      ...signupValue,
       [e.target.name]: e.target.value,
     });
   };
-  const handleSumitSignup = () => {
-    console.log("submit");
-  };
+
+  useSetNavInvisible();
+  useEffect(() => {
+    if (isSuccess) {
+      navigate({
+        pathname: "/signin",
+      });
+    }
+  }, [isSuccess]);
+
   return (
     <SignUpTemplate
-      signupState={signupState}
+      signupState={signupValue}
       onChange={handleSignupState}
-      onClick={handleSumitSignup}
+      onClick={handleSignUp}
     />
   );
 };

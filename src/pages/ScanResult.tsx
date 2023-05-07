@@ -1,16 +1,22 @@
+import { useLocation } from "react-router-dom";
 import ScanResultTemplate from "@/components/template/scan-result";
-import { resultType } from "@/types/types";
+import { useSetNavVisible } from "@/hooks/useSetNavState";
+import { InfoType } from "@/types/info";
 
-const MOCKLIST: resultType = {
-  id: "482299",
-  company: "CJ 대한통운",
-  info: "데일리 트레이닝",
-  sender: "이규호",
-  receiver: "김재한",
-  deliver: "신현식",
-};
 const ScanResult = () => {
-  return <ScanResultTemplate resultList={MOCKLIST} onClick={() => {}} />;
+  const location = useLocation();
+  const info: InfoType = { ...location.state.infoData };
+
+  useSetNavVisible();
+
+  return (
+    <ScanResultTemplate
+      infoData={info}
+      onClick={() => {
+        console.log("파기");
+      }}
+    />
+  );
 };
 
 export default ScanResult;

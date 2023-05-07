@@ -1,18 +1,15 @@
-import { resultType } from "@/types/types";
-import ResultList from "@/components/pages/scan/result-list";
+import { InfoType } from "@/types/info";
 import DeleteBtn from "@/components/pages/scan/delete-btn";
+import ResultList from "@/components/pages/scan/result-list";
 import * as style from "./ScanResultTemplate.style";
 
 export interface ScanResultTemplateProps {
-  resultList: resultType;
+  infoData: InfoType;
   onClick: () => void;
 }
-const ScanResultTemplate = ({
-  resultList,
-  onClick,
-}: ScanResultTemplateProps) => (
+const ScanResultTemplate = ({ infoData, onClick }: ScanResultTemplateProps) => (
   <style.Wrapper>
-    <ResultList resultList={resultList} />
+    <ResultList infoData={infoData} />
     <DeleteBtn onClick={onClick} />
   </style.Wrapper>
 );
