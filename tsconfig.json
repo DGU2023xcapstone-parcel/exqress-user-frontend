@@ -32,7 +32,8 @@
       "@/styles/*": ["./src/styles/*"],
       "@/recoil/*": ["./src/recoil/*"],
       "@/types/*": ["./src/types/*"],
-      "@/utils/*": ["./src/utils/*"]
+      "@/utils/*": ["./src/utils/*"],
+      "@/services/*": ["./src/services/*"]
     }
   },
   "include": ["src"],
