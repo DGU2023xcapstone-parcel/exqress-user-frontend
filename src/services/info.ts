@@ -10,7 +10,6 @@ export const getInfoList = async () => {
     if (res.isSuccess && res.result.data) {
       return res.result.data;
     }
-    return [];
   });
   return response;
 };
