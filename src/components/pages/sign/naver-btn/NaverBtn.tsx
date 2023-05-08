@@ -1,4 +1,4 @@
-import { LegacyRef, useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 const NaverBtn = () => {
   const naver = (window as any).naver;
@@ -15,8 +15,9 @@ const NaverBtn = () => {
       // 버튼 타입 ( 색상, 타입, 크기 변경 가능 )
       loginButton: {
         color: "green",
-        type: 3,
-        height: 50,
+        type: 1,
+        height: 40,
+        name: "123",
       },
       callbackHandle: true,
     });
@@ -54,9 +55,8 @@ const NaverBtn = () => {
   };
 
   const getToken = () => {
-    const token = window.location.href.split("=")[1].split("&")[0];
+    // const token = window.location.href.split("=")[1].split("&")[0];
     // console.log, alert 창을 통해 토큰이 잘 추출 되는지 확인하자!
-
     // 이후 로컬 스토리지 또는 state에 저장하여 사용하자!
     // localStorage.setItem('access_token', token)
     // setGetToken(token)

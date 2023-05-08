@@ -30,16 +30,17 @@ export const Inner = styled.div`
 `;
 
 export const BtnBox = styled.div`
-  height: 200px;
+  width: 300px;
 
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 `;
 
 export const Img = styled.img`
-  width: 300px;
+  width: 40px;
+
+  border-radius: 5px;
 
   cursor: pointer;
 `;

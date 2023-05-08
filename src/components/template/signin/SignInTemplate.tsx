@@ -1,13 +1,12 @@
 import { ChangeEvent } from "react";
-import Input from "@/components/common/input";
 import MainLogo from "@/assets/mainLogo.svg";
+import Input from "@/components/common/input";
+import KakaoImg from "@/assets/kakao.png";
+import NaverBtn from "@/components/pages/sign/naver-btn";
+import GoogleBtn from "@/components/pages/sign/google-btn";
 import SubmitBtn from "@/components/pages/sign/submit-btn";
 import SignupBtn from "@/components/pages/sign/signup-btn";
-import Kakao from "@/assets/kakao.svg";
-import Naver from "@/assets/naver.svg";
 import * as style from "./SignInTemplate.style";
-import GoogleBtn from "@/components/pages/sign/google-btn";
-import NaverBtn from "../../pages/sign/naver-btn/NaverBtn";
 
 export interface SignInTemplateProps {
   id: string;
@@ -44,11 +43,12 @@ const SignInTemplate = ({
       </style.Inner>
       <SubmitBtn text={"로그인"} onClick={onClick} />
     </style.Box>
+    <SignupBtn />
+    간편 로그인
     <style.BtnBox>
-      <SignupBtn />
-      <style.Img src={Kakao} onClick={onKakaoLogin} />
-      <GoogleBtn />
+      <style.Img src={KakaoImg} onClick={onKakaoLogin} />
       <NaverBtn />
+      <GoogleBtn />
     </style.BtnBox>
   </style.Wrapper>
 );

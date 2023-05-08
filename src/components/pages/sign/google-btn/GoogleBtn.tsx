@@ -6,7 +6,8 @@ const GoogleBtn = () => {
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <GoogleLogin
-        width={"300px"}
+        type="icon"
+        size="large"
         onSuccess={(credentialResponse) => {
           console.log(credentialResponse);
         }}

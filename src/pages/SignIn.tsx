@@ -1,17 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { ChangeEvent, useEffect, useState } from "react";
-import SignInTemplate from "@/components/template/signin";
+import { ChangeEvent, useState } from "react";
 import { useSignIn } from "@/hooks/useSignIn";
-import { useSetNavInvisible } from "@/hooks/useSetNavState";
+import { KAKAO_AUTH_URL } from "@/constants/oAuth";
+import SignInTemplate from "@/components/template/signin";
 
 const SignIn = () => {
-  const navigate = useNavigate();
   const [signInValue, setSignInValue] = useState({
     id: "",
     password: "",
   });
-  const { handleSignIn, data, isError, isSuccess, isLoading } =
-    useSignIn(signInValue);
+  const { handleSignIn } = useSignIn(signInValue);
 
   const handleSignInValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSignInValue({
@@ -22,16 +19,6 @@ const SignIn = () => {
   const handlekakaoLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
-
-  useSetNavInvisible();
-  useEffect(() => {
-    if (isLoading) {
-      // 이건 나중에 뺄것
-      navigate({
-        pathname: "/info",
-      });
-    }
-  }, [isLoading]);
 
   return (
     <SignInTemplate
