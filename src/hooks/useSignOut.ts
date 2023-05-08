@@ -1,29 +1,32 @@
-import { useSetRecoilState } from "recoil";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { signOut } from "@/services/sign";
-import { authState } from "@/recoil/auth";
 import { setAccessToken } from "@/apis/API";
 
 export const useSignOut = () => {
-  const setAuthAtom = useSetRecoilState(authState);
+  const navigate = useNavigate();
 
-  const { mutate, data, isLoading, isSuccess, isError } = useMutation(
-    ["signout"],
-    signOut,
-    {
-      onSuccess: () => {
-        setAccessToken("");
-        setAuthAtom(false);
-      },
-      onError: (error) => {
-        console.log(`Use Signin Error: `, error);
-      },
-    }
-  );
+  const { mutate, isLoading } = useMutation(["signout"], signOut, {
+    onSuccess: () => {
+      setAccessToken("");
+    },
+    onError: (error) => {
+      console.log(`Use Signin Error: `, error);
+    },
+  });
 
   const handleSignOut = () => {
     mutate();
   };
 
-  return { handleSignOut, data, isLoading, isSuccess, isError };
+  useEffect(() => {
+    if (isLoading) {
+      navigate({
+        pathname: "/signin",
+      });
+    }
+  }, [isLoading]);
+
+  return { handleSignOut };
 };
