@@ -8,17 +8,12 @@ import Info from "@/pages/Info";
 import InfoDetail from "@/pages/InfoDetail";
 import Kakao from "@/pages/KaKao";
 
-const AppRouter = () => {
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="signin">
-              <Route path="" element={<SignIn />} />
-              <Route path="kakao" element={<Kakao />} />
-            </Route>
-            <Route path="signup" element={<SignUp />} />
+const AppRouter = () => (
+  <>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route element={<Layout isActivate />}>
             <Route path="scan">
               <Route path="" element={<Scan />} />
               <Route path="result" element={<ScanResult />} />
@@ -28,10 +23,15 @@ const AppRouter = () => {
               <Route path="detail" element={<InfoDetail />} />
             </Route>
           </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
-};
+          <Route element={<Layout isActivate={false} />}>
+            <Route path="signin" element={<SignIn />} />
+            <Route path="kakao" element={<Kakao />} />
+            <Route path="signup" element={<SignUp />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </>
+);
 
 export default AppRouter;
