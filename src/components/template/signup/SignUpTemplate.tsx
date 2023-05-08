@@ -1,11 +1,11 @@
 import { ChangeEvent } from "react";
 import Input from "@/components/common/input";
-import { SignUpStateType } from "@/pages/SignUp";
+import { SignUpInputType } from "@/types/sign";
 import SignupSubmitBtn from "@/components/pages/sign/signup-submit-btn";
 import * as style from "./SignUpTemplate.style";
 
 export interface SignUpTemplateProps {
-  signupState: SignUpStateType;
+  signupState: SignUpInputType;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
 }

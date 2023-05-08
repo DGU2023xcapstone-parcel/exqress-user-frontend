@@ -1,12 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useSignUp } from "@/hooks/useSignUp";
 import { SignUpInputType } from "@/types/sign";
 import SignUpTemplate from "@/components/template/signup";
-import { useSetNavInvisible } from "@/hooks/useSetNavState";
 
 const SignUp = () => {
-  const navigate = useNavigate();
   const [signupValue, setSignupValue] = useState<SignUpInputType>({
     id: "",
     password: "",
@@ -15,7 +12,7 @@ const SignUp = () => {
     phone: "",
     email: "",
   });
-  const { handleSignUp, data, isSuccess } = useSignUp(signupValue);
+  const { handleSignUp } = useSignUp(signupValue);
 
   const handleSignupState = (e: ChangeEvent<HTMLInputElement>) => {
     setSignupValue({
@@ -23,15 +20,6 @@ const SignUp = () => {
       [e.target.name]: e.target.value,
     });
   };
-
-  useSetNavInvisible();
-  useEffect(() => {
-    if (isSuccess) {
-      navigate({
-        pathname: "/signin",
-      });
-    }
-  }, [isSuccess]);
 
   return (
     <SignUpTemplate
