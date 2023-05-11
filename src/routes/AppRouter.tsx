@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Scan from "@/pages/Scan";
-import ScanResult from "@/pages/ScanResult";
-import Layout from "@/components/common/layout";
+import Info from "@/pages/Info";
+import Kakao from "@/pages/KaKao";
 import SignIn from "@/pages/SignIn";
 import SignUp from "@/pages/SignUp";
-import Info from "@/pages/Info";
+import ScanResult from "@/pages/ScanResult";
 import InfoDetail from "@/pages/InfoDetail";
-import Kakao from "@/pages/KaKao";
+import Layout from "@/components/common/layout";
 
 const AppRouter = () => (
   <>
@@ -18,10 +18,8 @@ const AppRouter = () => (
               <Route path="" element={<Scan />} />
               <Route path="result" element={<ScanResult />} />
             </Route>
-            <Route path="info">
-              <Route path="" element={<Info />} />
-              <Route path="detail" element={<InfoDetail />} />
-            </Route>
+            <Route path="" element={<Info />} />
+            <Route path="detail" element={<InfoDetail />} />
           </Route>
           <Route element={<Layout isActivate={false} />}>
             <Route path="signin" element={<SignIn />} />
