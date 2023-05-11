@@ -20,8 +20,9 @@ export const setAccessToken = (token: string) => {
  * @param error 에러 객체 반환
  */
 const onError = (error: AxiosError | Error): Promise<AxiosError> => {
-  const [, setIsAuth] = useRecoilState(authState);
   const navigate = useNavigate();
+  const [, setIsAuth] = useRecoilState(authState);
+
   if (isAxiosError<CommonResponse<any>>(error)) {
     const { status, message } = error.response!.data;
 
