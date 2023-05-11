@@ -3,7 +3,8 @@ import {
   SignInOutputType,
   SignUpInputType,
 } from "@/types/sign";
-import { postFetcher } from "@/apis/API";
+import { postPublicApi } from "@/apis/publicApi";
+import { getAuthApi, postAuthApi } from "@/apis/authApi";
 
 /**
  * 회원가입
@@ -16,12 +17,11 @@ import { postFetcher } from "@/apis/API";
  * @returns 가입 성공 시 success, 실패 시 에러 반환 (1001, 500 등)
  */
 export const signUp = async (props: SignUpInputType) => {
-  const response = await postFetcher<undefined, SignUpInputType>("/signup", {
-    ...props,
-  }).then((res) => {
-    if (res.isSuccess) return "success";
-    return "error";
-  });
+  const response = await postPublicApi<undefined, SignUpInputType>(
+    "/signup",
+    props
+  );
+
   return response;
 };
 
@@ -32,20 +32,11 @@ export const signUp = async (props: SignUpInputType) => {
  * @returns 성공 시 JWT 액세스 토큰 인계, 실패 시 에러 객체 반환
  */
 export const signIn = async (props: SignInInputType) => {
-  const response = await postFetcher<SignInOutputType, SignInInputType>(
+  const response = await postAuthApi<SignInOutputType, SignInInputType>(
     "/signin",
     { ...props }
-  ).then((res) => {
-    // api호출 성공
-    if (res.isSuccess) {
-      // 값 있으면 token 추출
-      if (res.result.data) {
-        const { token } = res.result.data;
-        return token;
-      }
-    }
-    return "";
-  });
+  );
+
   return response;
 };
 
@@ -54,12 +45,17 @@ export const signIn = async (props: SignInInputType) => {
  * @returns 성공 시 header 비움
  */
 export const signOut = async () => {
-  const response = await postFetcher<undefined, undefined>("/signout").then(
-    (res) => {
-      // api호출 성공
-      if (res.isSuccess) return "success";
-      return "error";
-    }
-  );
+  const response = await postAuthApi<undefined, undefined>("/signout");
+
+  return response;
+};
+
+/**
+ * 토큰 재발급
+ * @returns 성공 시
+ */
+export const refreshToken = async () => {
+  const response = await getAuthApi<SignInOutputType>("/refresh");
+
   return response;
 };

@@ -1,6 +1,6 @@
-import { getFetcher } from "@/apis/API";
 import { InfoType } from "@/types/info";
 import { ScanType } from "@/types/scan";
+import { getAuthApi } from "@/apis/authApi";
 
 /**
  * scan후 값 받아오는 api
@@ -8,10 +8,9 @@ import { ScanType } from "@/types/scan";
  * @returns info 리스트
  */
 export const getScanResult = async (props: ScanType) => {
-  const response = await getFetcher<InfoType>("/scan", {
+  const response = await getAuthApi<InfoType>("/scan", {
     params: { code: props },
-  }).then((res) => {
-    if (res.isSuccess && res.result.data) return res.result.data;
   });
+
   return response;
 };
