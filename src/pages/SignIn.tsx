@@ -1,14 +1,15 @@
 import { ChangeEvent, useState } from "react";
 import { useSignIn } from "@/hooks/useSignIn";
+import { SignInInputType } from "@/types/sign";
 import { KAKAO_AUTH_URL } from "@/constants/oAuth";
 import SignInTemplate from "@/components/template/signin";
 
 const SignIn = () => {
-  const [signInValue, setSignInValue] = useState({
+  const [signInValue, setSignInValue] = useState<SignInInputType>({
     id: "",
     password: "",
   });
-  const { handleSignIn } = useSignIn(signInValue);
+  const { handleSignIn } = useSignIn();
 
   const handleSignInValue = (e: ChangeEvent<HTMLInputElement>) => {
     setSignInValue({
@@ -25,7 +26,7 @@ const SignIn = () => {
       id={signInValue.id}
       password={signInValue.password}
       onChange={handleSignInValue}
-      onClick={handleSignIn}
+      onClick={() => handleSignIn(signInValue)}
       onKakaoLogin={handlekakaoLogin}
     />
   );

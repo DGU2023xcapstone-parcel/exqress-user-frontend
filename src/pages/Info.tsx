@@ -8,7 +8,7 @@ const Info = () => {
   const { data } = useGetInfoList();
 
   const handleNaviate = (infoData: InfoType) => {
-    navigate("/info/detail", {
+    navigate("/detail", {
       state: {
         infoData: infoData,
       },
