@@ -1,31 +1,23 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { signUp } from "@/services/sign";
-import { SignUpInputType } from "@/types/sign";
+import { signUp } from "@/services/user";
+import { queryKeys } from "@/react-query/constants";
 
-export const useSignUp = (props: SignUpInputType) => {
+export const useSignUp = () => {
   const navigate = useNavigate();
 
-  const { mutate, isLoading } = useMutation(["signup"], signUp, {
-    onSuccess: (res) => {
-      console.log(res);
-    },
-    onError: (error) => {
-      console.log(`Use Signin Error: `, error);
-    },
-  });
+  const { mutate: handleSignUp, isLoading } = useMutation(
+    queryKeys.user,
+    signUp
+  );
 
-  const handleSignUp = () => {
-    mutate(props);
-  };
-
+  // todo isLoading -> isSuccess
   useEffect(() => {
-    if (isLoading) {
+    if (isLoading)
       navigate({
         pathname: "/signin",
       });
-    }
   }, [isLoading]);
 
   return { handleSignUp };

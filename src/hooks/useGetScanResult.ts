@@ -1,45 +1,40 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { INFO_LIST } from "../mock";
 import { ScanType } from "@/types/scan";
 import { getScanResult } from "@/services/scan";
+import { queryKeys } from "@/react-query/constants";
+import { INFO_LIST } from "../mock";
 
 /**
- * 스캔 결과값을 받아오는 hooks
+ * 스캔 결과값을 받아오는 hooks, 만약 값 있다? 값 반환, 유효하지않은 qr, 니꺼아님
  * @params 스캔한 코드 값
  * @returns info 리스트
  */
 export const useGetScanResult = (props: ScanType) => {
   const navigate = useNavigate();
-
   const {
     data = INFO_LIST[0],
     refetch,
     isLoading,
     isSuccess,
     isError,
-  } = useQuery(["scanInfo"], () => getScanResult(props), {
+  } = useQuery(queryKeys.scan, () => getScanResult(props), {
     // enabled로 code값이 있을때만 요청하도록
-    enabled: !!!props.code,
-    onSuccess: (res) => {
-      console.log(res);
-    },
-    onError: (error) => {
-      console.log(`Use Signin Error: `, error);
-    },
+    enabled: !!props.code,
   });
 
-  // todo isSuccess로 바꾸기
+  // todo isLoading -> isSuccess
   useEffect(() => {
-    if (props.code !== "") {
+    console.log(!!props.code);
+    if (isLoading && !!props.code) {
       navigate("/scan/result", {
         state: {
           infoData: data,
         },
       });
     }
-  }, [props.code]);
+  }, [isLoading, props.code]);
 
   return { data, refetch, isLoading, isSuccess, isError };
 };

@@ -1,31 +1,26 @@
 import { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { signIn } from "@/services/sign";
-import { setAccessToken } from "@/apis/API";
-import { SignInInputType } from "@/types/sign";
+import { signIn } from "@/services/user";
+import { authState } from "@/recoil/auth";
+import { queryKeys } from "@/react-query/constants";
 
-export const useSignIn = (props: SignInInputType) => {
+export const useSignIn = () => {
   const navigate = useNavigate();
+  const [, setIsAuth] = useRecoilState(authState);
 
-  const { mutate, isLoading } = useMutation(["signin"], signIn, {
-    onSuccess: (res) => {
-      setAccessToken(res);
-    },
-    onError: (error) => {
-      console.log(`Use Signin Error: `, error);
-    },
-  });
+  const { mutate: handleSignIn, isLoading } = useMutation(
+    queryKeys.user,
+    signIn
+  );
 
-  const handleSignIn = () => {
-    mutate(props);
-  };
-
+  // todo isLoading -> isSuccess
   useEffect(() => {
     if (isLoading) {
-      // 이건 나중에 뺄것
+      setIsAuth(true);
       navigate({
-        pathname: "/info",
+        pathname: "/",
       });
     }
   }, [isLoading]);
