@@ -33,7 +33,8 @@
       "@/recoil/*": ["./src/recoil/*"],
       "@/types/*": ["./src/types/*"],
       "@/utils/*": ["./src/utils/*"],
-      "@/services/*": ["./src/services/*"]
+      "@/services/*": ["./src/services/*"],
+      "@/react-query/*": ["./src/react-query/*"]
     }
   },
   "include": ["src"],
