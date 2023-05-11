@@ -10,7 +10,7 @@ const Navigation = () => {
 
   return (
     <style.Wrapper>
-      <Link to="/info">
+      <Link to="/">
         <style.Img src={Truck} />
       </Link>
       <Link to="/scan">

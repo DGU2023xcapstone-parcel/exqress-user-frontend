@@ -5,9 +5,8 @@ export const Wrapper = styled.div`
   ${({ theme }) => {
     const { colors, fonts } = theme;
     return css`
-      width: 115%;
+      width: 100%;
       height: 190px;
-      margin-top: 50px;
 
       display: flex;
       justify-content: space-around;
