@@ -20,9 +20,6 @@ export default defineConfig({
         main: "./index.html",
         sw: "./sw.js",
       },
-      output: {
-        sw: "/",
-      },
     },
   },
   plugins: [react(), tsconfigPaths()],
