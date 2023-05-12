@@ -7,6 +7,7 @@ const style = css`
     height: 100vh;
     padding: 0;
     margin: 0px auto;
+    touch-action: none;
 
     -webkit-text-size-adjust: none;
   }
