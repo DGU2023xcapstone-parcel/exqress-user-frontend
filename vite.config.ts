@@ -14,6 +14,16 @@ export default defineConfig({
       },
     ],
   },
-
+  build: {
+    rollupOptions: {
+      input: {
+        main: "./index.html",
+        sw: "./sw.js",
+      },
+      output: {
+        sw: "/",
+      },
+    },
+  },
   plugins: [react(), tsconfigPaths()],
 });
