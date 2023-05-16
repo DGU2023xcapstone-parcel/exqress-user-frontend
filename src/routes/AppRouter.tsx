@@ -15,16 +15,14 @@ const AppRouter = () => {
   return (
     <RouteTransition path={location.pathname}>
       <Routes location={location}>
-        <Route path="/">
-          <Route element={<Layout isActivate />}>
+        <Route element={<Layout />}>
+          <Route path="/">
             <Route path="scan">
               <Route path="" element={<Scan />} />
               <Route path="result" element={<ScanResult />} />
             </Route>
             <Route path="" element={<Info />} />
             <Route path="detail" element={<InfoDetail />} />
-          </Route>
-          <Route element={<Layout isActivate={false} />}>
             <Route path="signin" element={<SignIn />} />
             <Route path="kakao" element={<Kakao />} />
             <Route path="signup" element={<SignUp />} />

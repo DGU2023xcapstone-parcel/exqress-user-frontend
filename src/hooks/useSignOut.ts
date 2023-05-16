@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
-import { signOut } from "@/services/user";
+// import { useMutation } from "@tanstack/react-query";
+// import { signOut } from "@/services/user";
 import { authState } from "@/recoil/auth";
 import { setAccessToken } from "@/apis/API";
-import { queryKeys } from "@/react-query/constants";
+// import { queryKeys } from "@/react-query/constants";
 
 /**
  * 로그아웃 hook
@@ -15,22 +15,23 @@ export const useSignOut = () => {
   const navigate = useNavigate();
   const [, setIsAuth] = useRecoilState(authState);
 
-  const { mutate, isLoading } = useMutation(queryKeys.user, signOut);
+  // const { mutate, isLoading } = useMutation(queryKeys.user, signOut);
 
   const handleSignOut = () => {
-    mutate();
+    // mutate();
+    setIsAuth(false);
+    setAccessToken("");
+    navigate({
+      pathname: "/signin",
+    });
   };
 
   // todo isLoading -> isSuccess
-  useEffect(() => {
-    if (isLoading) {
-      setIsAuth(false);
-      setAccessToken("");
-      navigate({
-        pathname: "/signin",
-      });
-    }
-  }, [isLoading]);
+  // useEffect(() => {
+  //   if (isLoading) {
+
+  //   }
+  // }, [isLoading]);
 
   return { handleSignOut };
 };

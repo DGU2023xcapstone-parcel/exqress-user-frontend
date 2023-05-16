@@ -3,7 +3,7 @@
 }
 
 .navigate-push-enter-active {
-  z-index: 1;
+  /* z-index: 1; */
   transform: translateX(0);
   transition: transform 300ms ease-in-out;
 }
@@ -19,5 +19,4 @@
 
 .transition-wrapper {
   position: relative;
-  width: 100vw;
 }

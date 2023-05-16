@@ -5,6 +5,7 @@ import { theme } from "./style/theme";
 import AppRouter from "./routes/AppRouter";
 import GlobalStyle from "./style/globalStyle";
 import { BrowserRouter } from "react-router-dom";
+import Navigation from "./components/common/navigation";
 
 const queryClient = new QueryClient();
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <GlobalStyle />
           <BrowserRouter>
             <AppRouter />
+            <Navigation />
           </BrowserRouter>
         </QueryClientProvider>
       </ThemeProvider>

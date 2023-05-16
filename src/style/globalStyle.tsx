@@ -7,8 +7,8 @@ const style = css`
     padding: 0;
     margin: 0px auto;
     touch-action: none;
-
     -webkit-text-size-adjust: none;
+    overflow: hidden;
   }
   .root {
     position: fixed;
