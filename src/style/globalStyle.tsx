@@ -4,7 +4,6 @@ const style = css`
   html,
   body {
     max-width: 420px;
-    height: 100vh;
     padding: 0;
     margin: 0px auto;
     touch-action: none;

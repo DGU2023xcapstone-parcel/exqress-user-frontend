@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { theme } from "./style/theme";
 import AppRouter from "./routes/AppRouter";
 import GlobalStyle from "./style/globalStyle";
+import { BrowserRouter } from "react-router-dom";
 
 const queryClient = new QueryClient();
 function App() {
@@ -13,7 +14,9 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevtools initialIsOpen={false} />
           <GlobalStyle />
-          <AppRouter />
+          <BrowserRouter>
+            <AppRouter />
+          </BrowserRouter>
         </QueryClientProvider>
       </ThemeProvider>
     </>

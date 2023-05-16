@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Scan from "@/pages/Scan";
 import Info from "@/pages/Info";
 import Kakao from "@/pages/KaKao";
@@ -7,11 +7,14 @@ import SignUp from "@/pages/SignUp";
 import ScanResult from "@/pages/ScanResult";
 import InfoDetail from "@/pages/InfoDetail";
 import Layout from "@/components/common/layout";
+import RouteTransition from "./PageTransition";
 
-const AppRouter = () => (
-  <>
-    <BrowserRouter>
-      <Routes>
+const AppRouter = () => {
+  const location = useLocation();
+
+  return (
+    <RouteTransition path={location.pathname}>
+      <Routes location={location}>
         <Route path="/">
           <Route element={<Layout isActivate />}>
             <Route path="scan">
@@ -28,8 +31,8 @@ const AppRouter = () => (
           </Route>
         </Route>
       </Routes>
-    </BrowserRouter>
-  </>
-);
+    </RouteTransition>
+  );
+};
 
 export default AppRouter;
