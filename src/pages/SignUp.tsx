@@ -5,12 +5,12 @@ import SignUpTemplate from "@/components/template/signup";
 
 const SignUp = () => {
   const [signUpValue, setSignUpValue] = useState<SignUpInputType>({
-    id: "",
-    password: "",
-    name: "",
-    company: "",
-    phone: "",
+    // id: "",
     email: "",
+    name: "",
+    password: "",
+    // company: "",
+    phoneNumber: "",
   });
   const { handleSignUp } = useSignUp(signUpValue);
 

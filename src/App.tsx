@@ -1,10 +1,10 @@
 import { ThemeProvider } from "@emotion/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { theme } from "./style/theme";
 import AppRouter from "./routes/AppRouter";
 import GlobalStyle from "./style/globalStyle";
-import { BrowserRouter } from "react-router-dom";
 import Navigation from "./components/common/navigation";
 
 const queryClient = new QueryClient();
