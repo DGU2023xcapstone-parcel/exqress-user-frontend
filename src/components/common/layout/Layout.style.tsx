@@ -8,8 +8,3 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
-export const Box = styled.div`
-  height: 100%;
-  width: 90%;
-`;

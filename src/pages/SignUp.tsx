@@ -4,7 +4,7 @@ import { SignUpInputType } from "@/types/sign";
 import SignUpTemplate from "@/components/template/signup";
 
 const SignUp = () => {
-  const [signupValue, setSignupValue] = useState<SignUpInputType>({
+  const [signUpValue, setSignUpValue] = useState<SignUpInputType>({
     id: "",
     password: "",
     name: "",
@@ -12,20 +12,20 @@ const SignUp = () => {
     phone: "",
     email: "",
   });
-  const { handleSignUp } = useSignUp();
+  const { handleSignUp } = useSignUp(signUpValue);
 
   const handleSignupState = (e: ChangeEvent<HTMLInputElement>) => {
-    setSignupValue({
-      ...signupValue,
+    setSignUpValue({
+      ...signUpValue,
       [e.target.name]: e.target.value,
     });
   };
 
   return (
     <SignUpTemplate
-      signupState={signupValue}
+      signUpValue={signUpValue}
       onChange={handleSignupState}
-      onClick={() => handleSignUp(signupValue)}
+      onClick={handleSignUp}
     />
   );
 };

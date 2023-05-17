@@ -7,17 +7,16 @@ import GoogleBtn from "@/components/pages/sign/google-btn";
 import SubmitBtn from "@/components/pages/sign/submit-btn";
 import SignupBtn from "@/components/pages/sign/signup-btn";
 import * as style from "./SignInTemplate.style";
+import { SignInInputType } from "@/types/sign";
 
 export interface SignInTemplateProps {
-  id: string;
-  password: string;
+  signInValue: SignInInputType;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onClick: () => void;
   onKakaoLogin: () => void;
 }
 const SignInTemplate = ({
-  id,
-  password,
+  signInValue,
   onChange,
   onClick,
   onKakaoLogin,
@@ -27,14 +26,14 @@ const SignInTemplate = ({
     <style.Box>
       <style.Inner>
         <Input
-          value={id}
+          value={signInValue.email}
           name="id"
           placeHolder="아이디"
           sizeType="Big"
           onChange={onChange}
         />
         <Input
-          value={password}
+          value={signInValue.password}
           name="password"
           placeHolder="비밀번호"
           sizeType="Big"
