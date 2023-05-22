@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import * as style from "./Layout.style";
-import { useRefreshToken } from "@/hooks/useRefreshToken";
+// import { useRefreshToken } from "@/hooks/useRefreshToken";
 
 const Layout = () => {
-  useRefreshToken();
+  // useRefreshToken();
 
   return (
     <style.Wrapper>
