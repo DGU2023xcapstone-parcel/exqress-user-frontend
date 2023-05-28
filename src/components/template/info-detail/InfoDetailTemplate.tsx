@@ -8,7 +8,7 @@ export interface ScanResultTemplateProps {
 }
 const InfoDetailTemplate = ({ infoData }: ScanResultTemplateProps) => (
   <style.Wrapper>
-    <InfoDetailHead state={infoData.state} />
+    <InfoDetailHead state={infoData.isComplete} />
     <ResultList infoData={infoData} />
   </style.Wrapper>
 );
