@@ -1,3 +1,3 @@
-export interface ScanType {
-  code: string;
-}
+export type ScanType = {
+  qrId: string;
+};

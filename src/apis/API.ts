@@ -1,6 +1,7 @@
 import axios, { isAxiosError } from "axios";
+
 import { API_URL } from "@/constants/url";
-import { CommonResponse, CustomAxiosInterface } from "./types";
+import { CommonResponse, CustomAxiosInterface } from "@/types/api";
 
 /**
  * accessToken을 axios 헤더에 담는 함수
@@ -19,31 +20,24 @@ export const setAccessToken = (token: string) => {
 const onError = (error: any) => {
   if (isAxiosError<CommonResponse<any>>(error)) {
     const { status, message } = error.response!.data;
+
     switch (status) {
-      // 그냥 데이터 문제
       case "400":
-        console.log(message);
         break;
-      // 권한 x
       case "401":
         setAccessToken("");
-        console.log(message);
         break;
-      // 이미 존재
       case "409":
-        console.log(message);
         break;
       case "500":
-        // 서버 문제
-        console.log(message);
         break;
       default:
-        console.log("알수없는 문제 발생");
         break;
     }
+    console.log(`${status}: ${message}`);
   } else {
     // 여긴 그냥 문제
-    console.log("알수없는 문제 발생");
+    console.log(`알수 없는 문제${error}`);
   }
   return Promise.reject(error);
 };
@@ -57,14 +51,16 @@ export const authApi: CustomAxiosInterface = axios.create({
   },
   withCredentials: true,
 });
-authApi.interceptors.response.use((response) => {
-  const { token } = response.data;
 
-  if (!!!token) {
-    setAccessToken(token);
+authApi.interceptors.response.use((response) => {
+  const { accessToken } = response.data;
+  console.log(`Call AUTH API = `, response.data.accessToken);
+
+  if (accessToken) {
+    console.log(`SET TOKEN ${accessToken}`);
+    setAccessToken(accessToken);
   }
 
-  console.log(`Call AUTH API = `, response.config.url);
   return response;
 }, onError);
 
@@ -75,8 +71,9 @@ export const publicApi: CustomAxiosInterface = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
 });
+
 publicApi.interceptors.response.use((response) => {
+  console.log(`Call PUBLIC API = `, response);
   return response;
 }, onError);

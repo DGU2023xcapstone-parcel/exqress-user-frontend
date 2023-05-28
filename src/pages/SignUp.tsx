@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react";
-import { useSignUp } from "@/hooks/useSignUp";
-import { SignUpInputType, SignUpType, SignUpValidateType } from "@/types/sign";
+
 import SignUpTemplate from "@/components/template/signup";
+import { useSignUp } from "@/hooks/useSignUp";
 import { validateAll, validateSignUp } from "@/utils/valid";
+import { SignUpInputType, SignUpType, SignUpValidateType } from "@/types/sign";
 
 const SignUp = () => {
   const [signUpValue, setSignUpValue] = useState<SignUpInputType>({
@@ -31,13 +32,13 @@ const SignUp = () => {
   const { handleSignUp } = useSignUp(signUpValue);
 
   const handleSignupState = (e: ChangeEvent<HTMLInputElement>) => {
-    const { valid, message } = validateSignUp(
+    const { isValid, message } = validateSignUp(
       e.target.name as SignUpType,
       e.target.value
     );
     const newValid = {
       ...signUpValidate,
-      [e.target.name]: valid,
+      [e.target.name]: isValid,
     };
 
     setSignUpValue({

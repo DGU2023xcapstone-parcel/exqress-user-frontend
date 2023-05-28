@@ -2,9 +2,8 @@
 // import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ScanType } from "@/types/scan";
-import { getScanResult } from "@/services/scan";
 import { queryKeys } from "@/react-query/constants";
-import { INFO_LIST } from "../mock";
+import { scanQrCode } from "@/services/scan";
 
 /**
  * 스캔 결과값을 받아오는 hooks, 만약 값 있다? 값 반환, 유효하지않은 qr, 니꺼아님
@@ -14,14 +13,14 @@ import { INFO_LIST } from "../mock";
 export const useGetScanResult = (props: ScanType) => {
   // const navigate = useNavigate();
   const {
-    // data = INFO_LIST[0],
+    data = [],
     // refetch,
     // isLoading,
     // isSuccess,
     // isError,
-  } = useQuery(queryKeys.scan, () => getScanResult(props), {
+  } = useQuery(queryKeys.scan, () => scanQrCode(props), {
     // enabled로 code값이 있을때만 요청하도록
-    enabled: !!props.code,
+    enabled: !!props.qrId,
   });
 
   // todo isLoading -> isSuccess
@@ -36,5 +35,5 @@ export const useGetScanResult = (props: ScanType) => {
   //   }
   // }, [isLoading, props.code]);
 
-  return { data: INFO_LIST[0] };
+  return { data };
 };

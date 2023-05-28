@@ -1,4 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
+
 import Scan from "@/pages/Scan";
 import Info from "@/pages/Info";
 import Kakao from "@/pages/KaKao";
@@ -7,7 +8,7 @@ import SignUp from "@/pages/SignUp";
 import ScanResult from "@/pages/ScanResult";
 import InfoDetail from "@/pages/InfoDetail";
 import Layout from "@/components/common/layout";
-import RouteTransition from "./PageTransition";
+import RouteTransition from "@/components/common/route-transition";
 
 const AppRouter = () => {
   const location = useLocation();

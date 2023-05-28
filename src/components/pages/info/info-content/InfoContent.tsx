@@ -1,5 +1,6 @@
 import { InfoType } from "@/types/info";
 import * as style from "./InfoContent.style";
+import { getDate } from "~/src/utils/date";
 
 interface InfoContentProps {
   info: InfoType;
@@ -10,16 +11,19 @@ const InfoContent = ({ info, onClick }: InfoContentProps) => {
     <style.Wrapper>
       <div>
         <style.Text isBig={false} isDark>
-          {info.date}
+          {getDate(info.createdDate)}
         </style.Text>
         <style.Text isBig isDark>
           {info.productName}
         </style.Text>
         <style.Text isBig={false} isDark={false}>
-          {info.invoiceNo} {info.sender}
+          {info.invoiceNo} {info.receiverName}
         </style.Text>
         <style.Text isBig={false} isDark>
-          {info.company}
+          {info.receiverPhoneNumber}
+        </style.Text>
+        <style.Text isBig={false} isDark>
+          {info.address}
         </style.Text>
       </div>
       <style.Button onClick={() => onClick(info)}>상세 정보</style.Button>

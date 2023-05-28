@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+
 import { useSignIn } from "@/hooks/useSignIn";
 import { SignInInputType } from "@/types/sign";
 import { KAKAO_AUTH_URL } from "@/constants/oAuth";
@@ -17,6 +18,7 @@ const SignIn = () => {
       [e.target.name]: e.target.value,
     });
   };
+
   const handlekakaoLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
   };

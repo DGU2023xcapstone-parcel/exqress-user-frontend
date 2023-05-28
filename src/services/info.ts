@@ -6,7 +6,7 @@ import { getAuthApi } from "@/apis/authApi";
  * @returns info 리스트
  */
 export const getInfoList = async () => {
-  const response = await getAuthApi<InfoType[]>("/info");
+  const response = await getAuthApi<InfoType[]>("/user/parcels");
 
-  return response;
+  return response.data;
 };

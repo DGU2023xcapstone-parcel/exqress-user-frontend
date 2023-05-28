@@ -14,6 +14,17 @@ export default defineConfig({
       },
     ],
   },
+  server: {
+    proxy: {
+      // 로컬 환경에서만 프록시를 적용할 경로 및 대상을 설정합니다.
+      "/dev": {
+        target:
+          "http://k8s-default-backuser-6b57e68a13-2063567931.ap-northeast-2.elb.amazonaws.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/dev/, ""),
+      },
+    },
+  },
   build: {
     rollupOptions: {
       input: {

@@ -1,16 +1,14 @@
-import { InfoType } from "@/types/info";
 import { ScanType } from "@/types/scan";
-import { getAuthApi } from "@/apis/authApi";
+import { postAuthApi } from "@/apis/authApi";
+import { InfoType } from "@/types/info";
 
 /**
- * scan후 값 받아오는 api
+ * scan후 택배 정보 보는 api
  * @params 스캔한 코드 값
- * @returns info 리스트
+ * @returns 택배 정보
  */
-export const getScanResult = async (props: ScanType) => {
-  const response = await getAuthApi<InfoType>("/scan", {
-    params: { code: props },
-  });
+export const scanQrCode = async (props: ScanType) => {
+  const response = await postAuthApi<InfoType, ScanType>("/qr/ready", props);
 
   return response;
 };

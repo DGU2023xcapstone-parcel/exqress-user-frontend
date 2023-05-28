@@ -27,7 +27,7 @@ const SignInTemplate = ({
       <style.Inner>
         <Input
           value={signInValue.email}
-          name="id"
+          name="email"
           placeHolder="아이디"
           sizeType="Big"
           onChange={onChange}
