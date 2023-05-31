@@ -6,6 +6,8 @@ import { useGetInfoList } from "@/hooks/useGetInfoList";
 import { useRefreshToken } from "@/hooks/useRefreshToken";
 
 const Info = () => {
+  useRefreshToken();
+
   const navigate = useNavigate();
   const { data } = useGetInfoList();
 
@@ -16,8 +18,6 @@ const Info = () => {
       },
     });
   };
-
-  useRefreshToken();
 
   return <InfoTemplate infoList={data} onClick={handleNaviate} />;
 };

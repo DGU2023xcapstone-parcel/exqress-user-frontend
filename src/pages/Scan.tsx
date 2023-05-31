@@ -1,24 +1,12 @@
-import { useState } from "react";
-
 import ScanTemplate from "@/components/template/scan";
-import { useGetScanResult } from "@/hooks/useScanQrCode";
+import { useScanQrCode } from "@/hooks/useScanQrCode";
+import { useRefreshToken } from "@/hooks/useRefreshToken";
 
 const Scan = () => {
-  const [result, setResult] = useState("");
-  useGetScanResult({ qrId: result });
+  useRefreshToken();
+  const { handleScan, handleError } = useScanQrCode();
 
-  const handleError = (error: any) => {
-    console.log(error);
-  };
-  const handleScan = (data: string | null) => {
-    if (data) {
-      setResult(data);
-    }
-  };
-
-  return (
-    <ScanTemplate onError={handleError} onScan={handleScan} result={result} />
-  );
+  return <ScanTemplate onError={handleError} onScan={handleScan} />;
 };
 
 export default Scan;

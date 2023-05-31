@@ -21,7 +21,7 @@ const InfoDetailHead = ({ state }: InfoDetailHeadProps) => {
       </style.Box>
       <style.Box>
         <style.State>
-          {state === "done" ? <style.Icon src={Truck} /> : <style.Sqare />}
+          {state === "complete" ? <style.Icon src={Truck} /> : <style.Sqare />}
         </style.State>
         배송 완료
       </style.Box>
