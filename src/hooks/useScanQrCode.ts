@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useMutation } from "@tanstack/react-query";
 import { queryKeys } from "@/react-query/constants";
 import { scanQrCode } from "@/services/scan";
-import { useEffect, useState } from "react";
 import useCustomToast from "./useCustomToast";
 
 /**
@@ -51,7 +51,7 @@ export const useScanQrCode = () => {
     if (data?.data && isSuccess) {
       navigate("/scan/result", {
         state: {
-          isSucess: false,
+          isSucess: true,
           infoData: data.data,
           qrId: qrId,
         },
