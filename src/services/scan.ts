@@ -10,7 +10,7 @@ import { InfoType } from "@/types/info";
 export const scanQrCode = async (props: ScanType) => {
   const response = await postAuthApi<InfoType, ScanType>("/scan", props);
 
-  return response.data;
+  return response;
 };
 
 export const clearInfo = async (props: Pick<InfoType, "invoiceNo">) => {
@@ -18,6 +18,12 @@ export const clearInfo = async (props: Pick<InfoType, "invoiceNo">) => {
     "/clear",
     props
   );
+
+  return response;
+};
+
+export const returnInfo = async (props: ScanType) => {
+  const response = await postAuthApi<null, ScanType>("/return", props);
 
   return response;
 };

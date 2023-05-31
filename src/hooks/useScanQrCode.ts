@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { queryKeys } from "@/react-query/constants";
 import { scanQrCode } from "@/services/scan";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useCustomToast from "./useCustomToast";
 
 /**
@@ -13,9 +13,27 @@ import useCustomToast from "./useCustomToast";
  */
 export const useScanQrCode = () => {
   const navigate = useNavigate();
+
+  const [qrId, setQrId] = useState("");
   const { data, mutate, isSuccess } = useMutation(queryKeys.scan, scanQrCode, {
     onSuccess: () => {
       useCustomToast("success", "스캔에 성공했습니다.");
+    },
+    onError: () => {
+      // 서버오류
+      if (data?.status === "500") {
+        useCustomToast("error", "다시 시도해주세요");
+        // 회원 택배 아닌경우
+      } else {
+        useCustomToast("error", "회원님의 택배가 아닙니다. 반송처리해주세요");
+        navigate("/scan/result", {
+          state: {
+            isSucess: false,
+            infoData: {},
+            qrId: qrId,
+          },
+        });
+      }
     },
   });
 
@@ -24,21 +42,22 @@ export const useScanQrCode = () => {
   };
   const handleScan = (data: string | null) => {
     if (data) {
-      console.log(data);
+      setQrId(data);
       mutate({ qrId: data });
     }
   };
 
   useEffect(() => {
-    if (data && isSuccess) {
-      console.log(data);
+    if (data?.data && isSuccess) {
       navigate("/scan/result", {
         state: {
-          infoData: data,
+          isSucess: false,
+          infoData: data.data,
+          qrId: qrId,
         },
       });
     }
-  }, [data, isSuccess]);
+  }, [data?.data, isSuccess]);
 
   return { handleScan, handleError };
 };

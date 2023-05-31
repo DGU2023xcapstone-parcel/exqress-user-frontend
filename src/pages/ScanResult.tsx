@@ -1,19 +1,31 @@
 import { useLocation } from "react-router-dom";
 
-import { InfoType } from "@/types/info";
 import ScanResultTemplate from "@/components/template/scan-result";
-import { useRefreshToken } from "@/hooks/useRefreshToken";
 import { useClearInfo } from "@/hooks/useClearInfo";
+import { useReturnInfo } from "@/hooks/useReturnInfo";
+import { useRefreshToken } from "@/hooks/useRefreshToken";
+import { ScanResultType } from "@/types/scan";
 
 const ScanResult = () => {
   useRefreshToken();
 
   const location = useLocation();
-  const info: InfoType = { ...location.state.infoData };
 
-  const { handleClearInfo } = useClearInfo({ invoiceNo: info.invoiceNo });
+  const info: ScanResultType = { ...location.state };
 
-  return <ScanResultTemplate infoData={info} onClick={handleClearInfo} />;
+  const { handleClearInfo } = useClearInfo({
+    invoiceNo: info.infoData.invoiceNo,
+  });
+  const { handleReturnInfo } = useReturnInfo({ qrId: info.qrId });
+
+  return (
+    <ScanResultTemplate
+      infoData={info.infoData}
+      isSuccess={info.isSuccess}
+      onHandleClearInfo={handleClearInfo}
+      onHandleReturnInfo={handleReturnInfo}
+    />
+  );
 };
 
 export default ScanResult;
