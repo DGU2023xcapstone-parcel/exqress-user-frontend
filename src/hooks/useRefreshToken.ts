@@ -2,6 +2,7 @@ import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+import { authApi } from "@/apis/API";
 import { authState } from "@/recoil/auth";
 import { refreshToken } from "@/services/user";
 import { queryKeys } from "@/react-query/constants";
@@ -26,5 +27,6 @@ export const useRefreshToken = async () => {
       });
     },
   });
-  if (!isAuth) await refetch();
+  if (!isAuth && !!!authApi.defaults.headers.common["Authorization"])
+    await refetch();
 };
