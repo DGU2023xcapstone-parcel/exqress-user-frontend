@@ -1,10 +1,9 @@
-// import { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { useMutation } from "@tanstack/react-query";
 import { queryKeys } from "@/react-query/constants";
 import { scanQrCode } from "@/services/scan";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import useCustomToast from "./useCustomToast";
 
 /**
@@ -40,5 +39,6 @@ export const useScanQrCode = () => {
       });
     }
   }, [data, isSuccess]);
+
   return { handleScan, handleError };
 };

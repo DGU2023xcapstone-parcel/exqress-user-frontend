@@ -13,7 +13,7 @@ const useCustomToast = (type: string, message?: string) => {
   const config = {
     position: toast.POSITION.TOP_CENTER,
     className: "custom-toast-width",
-    autoClose: 1000,
+    autoClose: 800,
     hideProgressBar: true,
     closeOnClick: true,
     rtl: false,

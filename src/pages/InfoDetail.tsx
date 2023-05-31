@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+
 import { InfoType } from "@/types/info";
 import InfoDetailTemplate from "@/components/template/info-detail";
 

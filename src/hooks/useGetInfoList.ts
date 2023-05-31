@@ -10,7 +10,7 @@ import useCustomToast from "./useCustomToast";
 
 /**
  * 현재 로그인한 사용자 택배 리스트 불러오는 hook
- * @returns info 리스트
+ * @returns info 리스트, 리스트 다시 불러오기
  */
 export const useGetInfoList = () => {
   const [isAuth] = useRecoilState(authState);
