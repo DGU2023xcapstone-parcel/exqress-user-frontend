@@ -29,18 +29,28 @@ export const useScanQrCode = () => {
         navigate("/scan/result", {
           state: {
             isSucess: false,
-            infoData: {},
+            infoData: {
+              invoiceNo: "",
+              productName: "",
+              receiverName: "",
+              state: "",
+              address: "",
+              deliverName: "",
+              company: "",
+              createdDate: "",
+            },
             qrId: qrId,
           },
         });
       }
     },
   });
-
+  console.log(isSuccess);
   const handleError = (error: any) => {
     console.log(error);
   };
   const handleScan = (data: string | null) => {
+    console.log(data);
     if (data) {
       setQrId(data);
       mutate({ qrId: data });

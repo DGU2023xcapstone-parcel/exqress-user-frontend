@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  height: 15%;
+  height: 11%;
   width: 100%;
 
   display: flex;

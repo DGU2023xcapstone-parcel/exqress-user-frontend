@@ -21,7 +21,7 @@ export const Title = styled.h2`
 `;
 
 export const Box = styled.div`
-  height: 370px;
+  height: 450px;
   width: 100%;
 
   border-top: 3px solid ${(props) => props.theme.colors.main};
