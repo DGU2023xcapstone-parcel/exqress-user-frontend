@@ -28,7 +28,7 @@ export const useScanQrCode = () => {
         useCustomToast("error", "회원님의 택배가 아닙니다. 반송처리해주세요");
         navigate("/scan/result", {
           state: {
-            isSucess: false,
+            isSuccess: false,
             infoData: {
               invoiceNo: "",
               productName: "",
@@ -45,12 +45,11 @@ export const useScanQrCode = () => {
       }
     },
   });
-  console.log(isSuccess);
+
   const handleError = (error: any) => {
     console.log(error);
   };
   const handleScan = (data: string | null) => {
-    console.log(data);
     if (data) {
       setQrId(data);
       mutate({ qrId: data });
@@ -61,7 +60,7 @@ export const useScanQrCode = () => {
     if (data?.data && isSuccess) {
       navigate("/scan/result", {
         state: {
-          isSucess: true,
+          isSuccess: true,
           infoData: data.data,
           qrId: qrId,
         },

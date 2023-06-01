@@ -15,15 +15,17 @@ const ScanResultTemplate = ({
   isSuccess,
   onHandleClearInfo,
   onHandleReturnInfo,
-}: ScanResultTemplateProps) => (
-  <style.Wrapper>
-    <ResultList infoData={infoData} />
-    {isSuccess ? (
-      <SubmitBtn onClick={onHandleClearInfo} text="개인정보 파기" />
-    ) : (
-      <SubmitBtn onClick={onHandleReturnInfo} text="택배 반송" />
-    )}
-  </style.Wrapper>
-);
+}: ScanResultTemplateProps) => {
+  return (
+    <style.Wrapper>
+      <ResultList infoData={infoData} />
+      {isSuccess ? (
+        <SubmitBtn onClick={onHandleClearInfo} text="개인정보 파기" />
+      ) : (
+        <SubmitBtn onClick={onHandleReturnInfo} text="택배 반송" />
+      )}
+    </style.Wrapper>
+  );
+};
 
 export default ScanResultTemplate;
