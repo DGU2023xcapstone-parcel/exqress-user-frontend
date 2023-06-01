@@ -1,6 +1,6 @@
+import { getDate } from "@/utils/date";
 import { InfoType } from "@/types/info";
 import * as style from "./InfoContent.style";
-import { getDate } from "~/src/utils/date";
 
 interface InfoContentProps {
   info: InfoType;
@@ -20,7 +20,7 @@ const InfoContent = ({ info, onClick }: InfoContentProps) => {
           {info.invoiceNo} {info.receiverName}
         </style.Text>
         <style.Text isBig={false} isDark>
-          {info.receiverPhoneNumber}
+          {info.company}
         </style.Text>
         <style.Text isBig={false} isDark>
           {info.address}

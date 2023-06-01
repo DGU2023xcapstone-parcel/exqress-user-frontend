@@ -10,9 +10,12 @@ const ResultList = ({
     <style.Title>택배정보</style.Title>
     <style.Box>
       <ListContent title={"운송장 번호"} content={infoData.invoiceNo} />
-      <ListContent title={"상태"} content={infoData.isComplete} />
+      <ListContent title={"상태"} content={infoData.state} />
       <ListContent title={"상품정보"} content={infoData.productName} />
       <ListContent title={"받는 분"} content={infoData.receiverName} />
+      <ListContent title={"배송 기사"} content={infoData.deliverName} />
+      <ListContent title={"회사"} content={infoData.company} />
+      <ListContent title={"주소"} content={infoData.address} />
       <ListContent title={"날짜"} content={getDate(infoData.createdDate)} />
     </style.Box>
   </style.Wrapper>
