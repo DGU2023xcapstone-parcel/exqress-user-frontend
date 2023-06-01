@@ -4,7 +4,7 @@ export type InfoType = {
   receiverName: string;
   state: string;
   address: string;
-  deliverName: string;
+  deliveryName: string;
   company: string;
   createdDate: string;
 };

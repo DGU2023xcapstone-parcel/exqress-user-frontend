@@ -13,7 +13,7 @@ const ResultList = ({
       <ListContent title={"상태"} content={infoData.state} />
       <ListContent title={"상품정보"} content={infoData.productName} />
       <ListContent title={"받는 분"} content={infoData.receiverName} />
-      <ListContent title={"배송 기사"} content={infoData.deliverName} />
+      <ListContent title={"배송 기사"} content={infoData.deliveryName} />
       <ListContent title={"회사"} content={infoData.company} />
       <ListContent title={"주소"} content={infoData.address} />
       <ListContent title={"날짜"} content={getDate(infoData.createdDate)} />

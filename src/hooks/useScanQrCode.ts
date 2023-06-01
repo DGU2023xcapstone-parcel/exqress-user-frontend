@@ -35,7 +35,7 @@ export const useScanQrCode = () => {
               receiverName: "",
               state: "",
               address: "",
-              deliverName: "",
+              deliveryName: "",
               company: "",
               createdDate: "",
             },
