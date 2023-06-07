@@ -43,12 +43,12 @@ const SignInTemplate = ({
       <SubmitBtn text={"로그인"} onClick={onClick} />
     </style.Box>
     <SignupBtn />
-    간편 로그인
+    {/* 간편 로그인
     <style.BtnBox>
       <style.Img src={KakaoImg} onClick={onKakaoLogin} />
       <NaverBtn />
       <GoogleBtn />
-    </style.BtnBox>
+    </style.BtnBox> */}
   </style.Wrapper>
 );
 
