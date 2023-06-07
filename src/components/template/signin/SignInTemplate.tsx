@@ -1,9 +1,9 @@
 import { ChangeEvent } from "react";
 import MainLogo from "@/assets/mainLogo.svg";
 import Input from "@/components/common/input";
-import KakaoImg from "@/assets/kakao.png";
-import NaverBtn from "@/components/pages/sign/naver-btn";
-import GoogleBtn from "@/components/pages/sign/google-btn";
+// import KakaoImg from "@/assets/kakao.png";
+// import NaverBtn from "@/components/pages/sign/naver-btn";
+// import GoogleBtn from "@/components/pages/sign/google-btn";
 import SubmitBtn from "@/components/pages/sign/submit-btn";
 import SignupBtn from "@/components/pages/sign/signup-btn";
 import * as style from "./SignInTemplate.style";
@@ -19,8 +19,8 @@ const SignInTemplate = ({
   signInValue,
   onChange,
   onClick,
-  onKakaoLogin,
-}: SignInTemplateProps) => (
+}: // onKakaoLogin,
+SignInTemplateProps) => (
   <style.Wrapper>
     <img src={MainLogo} />
     <style.Box>
