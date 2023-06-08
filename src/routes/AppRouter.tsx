@@ -22,9 +22,9 @@ const AppRouter = () => {
               <Route path="" element={<Scan />} />
               <Route path="result" element={<ScanResult />} />
             </Route>
-            <Route path="" element={<Info />} />
+            <Route path="" element={<SignIn />} />
+            <Route path="info" element={<Info />} />
             <Route path="detail" element={<InfoDetail />} />
-            <Route path="signin" element={<SignIn />} />
             <Route path="kakao" element={<Kakao />} />
             <Route path="signup" element={<SignUp />} />
           </Route>

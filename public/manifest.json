@@ -2,7 +2,7 @@
   "name": "EXQRESS",
   "short_name": "EXQRESS",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#485EEE",
   "icons": [

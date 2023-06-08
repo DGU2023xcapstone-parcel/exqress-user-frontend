@@ -22,11 +22,17 @@ export const useRefreshToken = async () => {
     },
     onError: () => {
       useCustomToast("error", "다시 로그인 해주세요.");
+      setIsAuth(false);
       navigate({
-        pathname: "/signin",
+        pathname: "/",
       });
     },
   });
-  if (!isAuth && !!!authApi.defaults.headers.common["Authorization"])
+
+  if (
+    !isAuth &&
+    authApi.defaults.headers.common["Authorization"] !== "Bearer"
+  ) {
     await refetch();
+  }
 };

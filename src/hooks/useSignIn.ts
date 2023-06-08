@@ -27,7 +27,7 @@ export const useSignIn = (props: SignInInputType) => {
       useCustomToast("success", "로그인 성공!");
       setIsAuth(true);
       navigate({
-        pathname: "/",
+        pathname: "/info",
       });
     },
   });

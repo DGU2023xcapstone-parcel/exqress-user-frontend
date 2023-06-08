@@ -1,22 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
 
+import { useSignOut } from "@/hooks/useSignOut";
 import Truck from "@/assets/truck.svg";
 import QrCode from "@/assets/qrCode.svg";
 import SignOut from "@/assets/signOut.svg";
-import { useSignOut } from "@/hooks/useSignOut";
 import * as style from "./Navigation.style";
 
 const Navigation = () => {
   const { handleSignOut } = useSignOut();
   const location = useLocation();
-  const isSign =
-    location.pathname === "/signin" || location.pathname === "/signup";
+  const isSign = location.pathname === "/" || location.pathname === "/signup";
 
   return (
     <>
       {!isSign && (
         <style.Wrapper>
-          <Link to="/">
+          <Link to="/info">
             <style.Img src={Truck} />
           </Link>
           <Link to="/scan">

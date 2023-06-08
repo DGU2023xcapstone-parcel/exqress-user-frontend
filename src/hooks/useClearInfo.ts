@@ -20,7 +20,7 @@ export const useClearInfo = (props: Pick<InfoType, "invoiceNo">) => {
     onSuccess: () => {
       useCustomToast("success", "개인정보가 파기되었습니다.");
       refetchInfo();
-      navigate({ pathname: "/" });
+      navigate({ pathname: "/info" });
     },
   });
 

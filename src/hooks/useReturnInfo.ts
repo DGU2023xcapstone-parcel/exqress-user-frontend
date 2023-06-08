@@ -17,7 +17,7 @@ export const useReturnInfo = (props: ScanType) => {
   const { mutate } = useMutation(queryKeys.info, returnInfo, {
     onSuccess: () => {
       useCustomToast("success", "반송처리 되었습니다.");
-      navigate({ pathname: "/" });
+      navigate({ pathname: "/info" });
     },
   });
 

@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
 import { signOut } from "@/services/user";
-import { authState } from "@/recoil/auth";
 import { setAccessToken } from "@/apis/API";
 import { queryKeys } from "@/react-query/constants";
-import { CustomAxiosErrorType } from "@/types/api";
+import { authState } from "@/recoil/auth";
 import useCustomToast from "./useCustomToast";
 
 /**
@@ -18,15 +17,15 @@ export const useSignOut = () => {
   const [, setIsAuth] = useRecoilState(authState);
 
   const { mutate } = useMutation(queryKeys.user, signOut, {
-    onError: (error: CustomAxiosErrorType) => {
-      useCustomToast("error", error.response?.data.message);
+    onError: () => {
+      useCustomToast("error", "다시 시작해서 로그인 해주세요");
     },
     onSuccess: () => {
       useCustomToast("success", "로그아웃 성공!");
       setIsAuth(false);
       setAccessToken("");
       navigate({
-        pathname: "/signin",
+        pathname: "/",
       });
     },
   });
