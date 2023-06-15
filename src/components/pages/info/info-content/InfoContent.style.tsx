@@ -25,7 +25,7 @@ export const Text = styled.div<TextState>`
   ${({ theme, isBig, isDark }) => {
     const { colors, fonts } = theme;
     return css`
-      width: 150px;
+      width: 240px;
 
       font-size: ${isBig ? fonts.size.medium : fonts.size.small};
       color: ${isDark ? colors.black : colors.gray300};
