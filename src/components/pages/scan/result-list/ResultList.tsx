@@ -16,7 +16,12 @@ const ResultList = ({
       <ListContent title={"배송 기사"} content={infoData.deliveryName} />
       <ListContent title={"회사"} content={infoData.company} />
       <ListContent title={"주소"} content={infoData.address} />
-      <ListContent title={"날짜"} content={getDate(infoData.createdDate)} />
+      <ListContent
+        title={"날짜"}
+        content={
+          infoData.createdDate === "" ? "" : getDate(infoData.createdDate)
+        }
+      />
     </style.Box>
   </style.Wrapper>
 );
