@@ -1,7 +1,8 @@
-import axios, { isAxiosError } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, isAxiosError } from "axios";
 
 import { API_URL } from "@/constants/url";
 import { CommonResponse, CustomAxiosInterface } from "@/types/api";
+import { refreshToken } from "@/services/user";
 
 /**
  * accessToken을 axios 헤더에 담는 함수
@@ -17,16 +18,29 @@ export const setAccessToken = (token: string) => {
  * @param error axios 에러 혹은 알수없는 에러
  * @param error 에러 객체 반환
  */
-const onError = (error: any) => {
-  if (isAxiosError<CommonResponse<any>>(error)) {
+const onError = async (error: AxiosError) => {
+  if (isAxiosError<CommonResponse<null>>(error)) {
     const { status, message } = error.response!.data;
+    const originalRequest = error.config as AxiosRequestConfig & {
+      _retry?: boolean;
+    };
 
     switch (status) {
       case "400":
         break;
-      case "401":
-        setAccessToken("");
-        break;
+      case "500":
+        console.log("500");
+        originalRequest._retry = true;
+        try {
+          refreshToken();
+          // 기존 요청을 다시 보내기
+          return authApi(originalRequest);
+        } catch (refreshError) {
+          // 토큰 리프레시 요청이 실패한 경우 로그아웃 또는 오류 처리 등을 수행
+          // 예시: localStorage.removeItem('token');
+          // 예시: redirect('/login');
+          throw refreshError;
+        }
       case "409":
         break;
       case "500":

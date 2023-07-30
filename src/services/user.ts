@@ -1,6 +1,7 @@
-import { SignInInputType, SignUpInputType } from "@/types/sign";
+import { RefreshType, SignInInputType, SignUpInputType } from "@/types/sign";
 import { postPublicApi } from "@/apis/publicApi";
 import { postAuthApi } from "@/apis/authApi";
+import { setAccessToken } from "../apis/API";
 
 /**
  * 회원가입
@@ -43,7 +44,9 @@ export const signOut = async () => {
  * @returns 성공 시
  */
 export const refreshToken = async () => {
-  const response = await postAuthApi<null, null>("/reissue");
+  try {
+    const response = await postAuthApi<RefreshType, null>("/reissue");
 
-  return response;
+    setAccessToken(response.accessToken);
+  } catch (error) {}
 };

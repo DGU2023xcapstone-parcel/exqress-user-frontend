@@ -46,7 +46,7 @@ export const useScanQrCode = () => {
     },
   });
 
-  const handleError = (error: any) => {
+  const handleError = (error: Event) => {
     console.log(error);
   };
   const handleScan = (data: string | null) => {

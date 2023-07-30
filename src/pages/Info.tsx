@@ -4,11 +4,8 @@ import { InfoType } from "@/types/info";
 import InfoTemplate from "@/components/template/info";
 import { useScroll } from "@/hooks/useScroll";
 import { useGetInfoList } from "@/hooks/useGetInfoList";
-import { useRefreshToken } from "@/hooks/useRefreshToken";
 
 const Info = () => {
-  useRefreshToken();
-
   const navigate = useNavigate();
   const { data } = useGetInfoList();
   const { isScrollable, contentRef } = useScroll();

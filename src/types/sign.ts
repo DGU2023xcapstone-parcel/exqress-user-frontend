@@ -23,3 +23,7 @@ export type SignInInputType = {
   email: string;
   password: string;
 };
+
+export type RefreshType = {
+  accessToken: string;
+};
